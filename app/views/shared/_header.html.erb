@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">beginmate</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+      <ul class="navbar-nav d-flex align-items-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">메이트 찾기</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">메이트 모집</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/teams/new">새 팀 만들기</a>
+        </li>
+
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_out" data-method="delete">로그아웃</a>
+          </li>
+
+          <% current_user.teams.each do |team| %>
+            <li class="nav-item">
+              <a class="nav-link" href="/teams/<%= team.id %>"><%= team.name %></a>
+            </li>
+          <% end %>
+
+          <% if current_user.profile.attached? %>
+            <img src="<%= url_for(current_user.profile) %>" alt="" class="logo_img rounded-circle">
+          <% else %>
+            <img src="https://picsum.photos/seed/picsum/200/300" alt="" class="logo_img rounded-circle">
+          <% end %>
+        <% else %>
+          <a class="nav-link" href="/users/sign_up">로그인/회원가입</a>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

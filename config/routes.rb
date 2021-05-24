@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :teams, except: [:index]
+
+  root "home#index"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
