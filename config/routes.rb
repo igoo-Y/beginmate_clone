@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   resources :teams, except: [:index]
+  resources :users, only: [:index, :show]
 
   root "home#index"
 

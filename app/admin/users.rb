@@ -12,6 +12,7 @@ ActiveAdmin.register User do
     end
     column :name
     column :status
+    column :details
     actions
   end
 
@@ -27,6 +28,11 @@ ActiveAdmin.register User do
       end
       row :name
       row :status
+      row :region
+      row :role
+      row :career
+      row :created_at
+      row :updated_at
     end
   end
 
@@ -34,9 +40,9 @@ ActiveAdmin.register User do
   filter :name
 
   scope :all, default: true
-  scope :no_status
-  scope :job_searching
-  scope :job_offering
-  scope :in_office
+  scope :no_status_status
+  scope :job_searching_status
+  scope :job_offering_status
+  scope :in_office_status
 
 end

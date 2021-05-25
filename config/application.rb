@@ -25,6 +25,7 @@ module CloneBeginmate
     config.load_defaults 6.0
 
     config.app_generators.scaffold_controller = :scaffold_controller
+
     config.i18n.default_locale = :ko
     config.time_zone = "Seoul"
     # Settings in config/environments/* take precedence over those specified here.

@@ -65,6 +65,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts-as-taggable-on (7.0.0)
+      activerecord (>= 5.0, < 6.2)
     any_login (1.4.3)
       rails (>= 4.2.7)
     arbre (1.4.0)
@@ -90,6 +92,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.4)
+      devise (>= 4.7.1)
     erubi (1.10.0)
     execjs (2.7.0)
     ffi (1.15.1)
@@ -243,11 +247,13 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts-as-taggable-on (~> 7.0)
   any_login
   bootsnap (>= 1.4.2)
   bootstrap (~> 5.0.1)
   byebug
   devise
+  devise-i18n
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
