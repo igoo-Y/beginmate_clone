@@ -13,6 +13,10 @@ ko:
         name: 이름
         profile: 프로필 이미지
         status: 상태
+        region: 지역
+        role: 직무
+        career: 경력
+        details: 세부사항
     errors:
       messages:
         record_invalid: 데이터 검증에 실패하였습니다. %{errors}

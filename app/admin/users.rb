@@ -12,6 +12,11 @@ ActiveAdmin.register User do
     end
     column :name
     column :status
+    column :region
+    column :role
+    column :career do |user|
+      "#{user.career} 년차"
+    end
     column :details
     actions
   end
@@ -38,11 +43,15 @@ ActiveAdmin.register User do
 
   filter :email
   filter :name
+  filter :region, as: :select, collection: User.regions
+  filter :role, as: :select, collection: User.roles
+  filter :career
+  filter :details_name_cont, label: "세부사항"
 
-  scope :all, default: true
-  scope :no_status_status
-  scope :job_searching_status
-  scope :job_offering_status
-  scope :in_office_status
+  scope -> {"전체"}, :all, default: true
+  scope -> {"표시안함"}, :no_status_status
+  scope -> {"구직중"},:job_searching_status
+  scope -> {"구인중"},:job_offering_status
+  scope -> {"재직중"},:in_office_status
 
 end

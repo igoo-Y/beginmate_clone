@@ -1,2 +1,54 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= form_with url: "/users", method: :get, local: true do |f| %>
+      <%= f.select :region, User.regions.keys, selected: params[:region], prompt: "지역" %>
+      <%= f.select :role, User.roles.keys, selected: params[:role], prompt: "직무" %>
+      <%= f.label :career %>
+      <%= f.number_field :career, min: 0, max: 10, value: params[:career] %>
+      <%= f.select :status, User.statuses.keys, selected: params[:status], prompt: "상태" %>
+      <%= f.button "검색" %>
+    <% end %>
+
+<!--    <form action="/users" method="get">-->
+<!--      <select name="region" id="users_region">-->
+<!--        <option value="region" selected hidden disabled>지역</option>-->
+        <%# User.regions.keys.each do |region| %>
+<!--          <option value=" <%#= region %>" <%#= "selected" if params[:region] == region %>><%#= region %></option>-->
+        <%# end %>
+<!--      </select>-->
+<!--      <select name="role" id="users_role">-->
+<!--        <option value="role" selected hidden disabled>직무</option>-->
+        <%# User.roles.keys.each do |role| %>
+<!--          <option value="<%#= role %>" <%#= "selected" if params[:role] == role %>><%#= role %></option>-->
+        <%# end %>
+<!--      </select>-->
+
+<!--      <label for="users_career">경력</label>-->
+<!--      <input type="number" name="career" max="10" min="0" id="users_career" value="<%#= params[:career] %>">-->
+
+<!--      <select name="status" id="users_status">-->
+<!--        <option value="status" selected hidden disabled>상태</option>-->
+        <%# User.statuses.keys.each do |status| %>
+<!--          <option value="<%#= status %>" <%#= "selected" if params[:status] == status %>><%#= status %></option>-->
+        <%# end %>
+<!--      </select>-->
+<!--      <button>검색</button>-->
+<!--    </form>-->
+  </div>
+  <div class="row">
+    <%@users.each do |user| %>
+      <div class="col-3 mt-5">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= user.name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%=user.region %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%=user.career %>년차</h6>
+            <h6 class="card-subtitle mb-2 text-muted"><%=user.role %></h6>
+            <p class="card-text"><%= user.detail_list %></p>
+            <a href="/users/<%= user.id %>" class="card-link">이동</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
